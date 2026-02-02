@@ -18,10 +18,10 @@
 | 파일 경로 | SHA256 해시 |
 |-----------|-------------|
 | `src/three_body_boundary_engine/__init__.py` | 5ef9dcf5cb43b432b5b3ae4677683a4ccc00741a39eca9efb545058ebd7f7775 |
-| `src/three_body_boundary_engine/three_body_boundary_engine.py` | 0ea4c8bfc52ffda25d13cfd17dc264b28ca9ac02ec2f2c41b0322d3706416799 |
-| `src/three_body_boundary_engine/config.py` | 90d8eb913a7c05de8143eb94219f0e8b62e52b33b2bb103ce0376beaa008ddc4 |
-| `src/three_body_boundary_engine/models.py` | 020721398bca64caa6f9f1e6fe8a5ce1c20c478007291425e0606084e58ae49a |
-| `src/three_body_boundary_engine/point.py` | 6aa4d899c01c67e6fca8a852660fcf6bad8570a3c9febd700b13ed63c52bf831 |
+| `src/three_body_boundary_engine/three_body_boundary_engine.py` | 6cbae783cd9bd75251a5c30a7b1f00db5f321a7bb9f9acfd9d972a42be75b454 |
+| `src/three_body_boundary_engine/config.py` | f65518b4040566386d4a3cb43683487aa6cfde550eb9e3acbd25c2324af852c3 |
+| `src/three_body_boundary_engine/models.py` | a4420331bfaa5e30d4a83e8909a3709cfcf9dfe636b7e8c0011b871fbc3b9036 |
+| `src/three_body_boundary_engine/point.py` | d5d6377618dbea88b14a4eecab9f497a0d823e1ae47f28e805f1a80501205716 |
 | `src/three_body_boundary_engine/gravity_calculator.py` | 3aeabb165d1c8a3869034b5187dee9f178d6ed4f96773c4e3b911aa10d3a7768 |
 | `src/three_body_boundary_engine/boundary_convergence_adapter.py` | 631439e00c833e814ec88c4332441454757d9318b7fa61af516d99b610019f6d |
 | `src/three_body_boundary_engine/lagrange_calculator.py` | f5d4898dc015d54660264afbd353773a41737cff088a49b29ff35d07a6539a7a |
@@ -30,8 +30,8 @@
 
 | 파일 경로 | SHA256 해시 |
 |-----------|-------------|
-| `README.md` | 8df3a49518a74e76c5f6a98a65ba0591bf4d0bce345f129ffb6167bf2bcedd68 |
-| `CHANGELOG.md` | 27c3c1b899462570c3201eb0ced6861007ca271c815d785a9b4107860c246122 |
+| `README.md` | (실제 해시 계산 중) |
+| `CHANGELOG.md` | (실제 해시 계산 중) |
 | `LICENSE` | 18556eb63192fdc742054834bcea409eedaa06cf061096cec25809d448bc2f47 |
 
 ---
