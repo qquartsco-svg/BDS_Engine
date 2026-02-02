@@ -22,16 +22,20 @@ Version: 1.0.0
 from .three_body_boundary_engine import ThreeBodyBoundaryEngine
 from .config import ThreeBodyConfig
 from .models import (
+    Body,
     ThreeBodySystem,
     StabilityAnalysis,
     BoundaryDynamics,
     LagrangeAnalysis
 )
+from .point import Point
 
 __version__ = "1.0.0"
 __all__ = [
     "ThreeBodyBoundaryEngine",
     "ThreeBodyConfig",
+    "Body",
+    "Point",
     "ThreeBodySystem",
     "StabilityAnalysis",
     "BoundaryDynamics",
