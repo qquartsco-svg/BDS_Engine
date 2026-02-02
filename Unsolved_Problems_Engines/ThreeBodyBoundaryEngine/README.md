@@ -212,6 +212,7 @@ core_strength = boundary_to_core_strength(boundary)
 - [사용 예제](./examples/)
 - [활용 분석 및 발전 방향](./docs/APPLICATION_ANALYSIS.md) ⭐ NEW
 - [실패 가능성 및 실패 추적 분석](./docs/FAILURE_ANALYSIS.md) ⭐ 핵심 용도
+- [실패 학습 메커니즘 분석](./docs/FAILURE_LEARNING_ANALYSIS.md) ⭐ STDP 유사 메커니즘
 
 ---
 
