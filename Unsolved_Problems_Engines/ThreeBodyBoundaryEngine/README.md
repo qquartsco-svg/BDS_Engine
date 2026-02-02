@@ -351,5 +351,5 @@ print(f"Stability Score: {analysis.stability_score:.3f}")
 ---
 
 **Author**: GNJz (Qquarts)  
-**Version**: 1.0.0
+**Version**: 1.1.0 (Causal Analysis Only)
 
