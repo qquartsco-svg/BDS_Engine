@@ -36,16 +36,48 @@ BDS Engine은 여러 개의 독립적이면서도 상호 연동 가능한 인지
 
 BDS Engine 내에서 형태 형성과 경계 안정화를 담당하는 핵심 엔진입니다.
 
+#### 이 엔진이 하는 일
+
+1. **경계 생성**: 원형 경계를 다각형으로 근사하여 초기 경계 생성
+2. **밀도 추정**: 경계 내부 공간의 밀도를 계산 (중요도 가중치 반영)
+3. **불일치 계산**: 현재 경계가 이론적인 원(둘레=2πr, 면적=πr²)에 얼마나 가까운가 측정
+4. **경계 정제**: 밀도 기울기와 mismatch 힘을 반영하여 경계를 정제
+5. **수렴 확인**: 불일치가 임계값 이하로 떨어지면 수렴 완료
+
+#### 원주율(π) 개념의 구현
+
+> ⚠️ **중요 명확화**: Boundary Convergence Engine은 **π(원주율)를 계산하거나 근사하는 수학 엔진이 아닙니다**.
+
+**엔진에서 π의 역할**:
+- π는 **목표값**으로 사용됨 (이론 둘레=2πr, 이론 면적=πr²)
+- 현재 경계가 이 목표에 얼마나 가까운가를 **불일치(Δ)**로 측정
+- 경계 정제 과정이 끝없이 반복되면 → 불일치가 0에 수렴 → 원에 수렴
+- **π는 수렴의 결과가 아니라, 수렴 과정의 특성**
+
+**물리적 의미**:
+```
+경계(선)가 생기면 → 내부 공간(면)이 정의됨
+  ↓
+공간을 채우기 위해 경계가 정제됨
+  ↓
+정제 과정이 끝없이 계속됨
+  ↓
+이 과정의 "정합 계수" = π
+```
+
+**핵심 통찰**: π는 결과가 아니라 과정이다. 경계가 생기고, 공간이 채워지고, 경계가 정제되는 이 끝없는 루프의 특성이 π다.
+
+#### 주요 기능
+
 - 경계와 공간의 정합 과정을 동역학적으로 모델링
 - π의 수렴 과정을 경계-공간 정합으로 재해석
 - 인지 공간 형성 시뮬레이션
 
-> ⚠️ **중요 명확화**: Boundary Convergence Engine은 **π(원주율)를 계산하거나 근사하는 수학 엔진이 아닙니다**.  
-> 본 엔진은 경계(boundary)와 내부 공간(space)이 상호작용하며 형태가 안정화되는 **동역학적 과정**을 시뮬레이션합니다.
-
 **위치**: [`Boundary_Convergence_Engine/`](./Boundary_Convergence_Engine/)
 
-**자세한 설명**: [Boundary Convergence Engine README](./Boundary_Convergence_Engine/README.md)
+**자세한 설명**: 
+- [Boundary Convergence Engine README](./Boundary_Convergence_Engine/README.md)
+- [엔진 상세 설명](./Boundary_Convergence_Engine/ENGINE_EXPLANATION.md) ⭐
 
 ---
 
@@ -191,16 +223,47 @@ BDS Engine is a framework composed of multiple independent yet interoperable cog
 
 **Boundary-Space Alignment Coefficient Engine**
 
+**What This Engine Does**:
+
+1. **Boundary Generation**: Creates initial boundary as a polygon approximating a circle
+2. **Density Estimation**: Calculates density of interior space (with importance weights)
+3. **Mismatch Calculation**: Measures how close current boundary is to theoretical circle (perimeter=2πr, area=πr²)
+4. **Boundary Refinement**: Refines boundary using density gradients and mismatch forces
+5. **Convergence Check**: Completes when mismatch falls below threshold
+
+**How π Concept is Implemented**:
+
+> ⚠️ **Important Clarification**: Boundary Convergence Engine does **NOT** compute or approximate π numerically.
+
+**Role of π in the Engine**:
+- π is used as a **target value** (theoretical perimeter=2πr, theoretical area=πr²)
+- Current boundary's proximity to this target is measured as **mismatch (Δ)**
+- As boundary refinement continues infinitely → mismatch converges to 0 → converges to circle
+- **π is not the result of convergence, but a property of the convergence process**
+
+**Physical Meaning**:
+```
+Boundary (line) is created → Interior space (area) is defined
+  ↓
+Boundary is refined to fill the space
+  ↓
+Refinement process continues infinitely
+  ↓
+The "alignment coefficient" of this process = π
+```
+
+**Key Insight**: π is not a result but a process. The property of this endless loop—where boundaries are created, space is filled, and boundaries are refined—is π.
+
+**Key Features**:
 - Dynamically models the alignment process between boundaries and space
 - Reinterprets π convergence as boundary-space alignment
 - Simulates cognitive space formation
 
-> ⚠️ **Important Clarification**: Boundary Convergence Engine does **NOT** compute or approximate π numerically.  
-> It simulates the dynamical process by which boundaries and interior space interact and stabilize into coherent forms.
-
 **Location**: [`Boundary_Convergence_Engine/`](./Boundary_Convergence_Engine/)
 
-**Detailed Documentation**: [Boundary Convergence Engine README](./Boundary_Convergence_Engine/README.md)
+**Detailed Documentation**: 
+- [Boundary Convergence Engine README](./Boundary_Convergence_Engine/README.md)
+- [Engine Detailed Explanation](./Boundary_Convergence_Engine/ENGINE_EXPLANATION.md) ⭐
 
 ### Key Features
 
