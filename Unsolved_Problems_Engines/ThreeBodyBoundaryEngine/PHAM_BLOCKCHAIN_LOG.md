@@ -30,8 +30,8 @@
 
 | 파일 경로 | SHA256 해시 |
 |-----------|-------------|
-| `README.md` | (실제 해시 계산 중) |
-| `CHANGELOG.md` | (실제 해시 계산 중) |
+| `README.md` | 8df3a49518a74e76c5f6a98a65ba0591bf4d0bce345f129ffb6167bf2bcedd68 |
+| `CHANGELOG.md` | 27c3c1b899462570c3201eb0ced6861007ca271c815d785a9b4107860c246122 |
 | `LICENSE` | 18556eb63192fdc742054834bcea409eedaa06cf061096cec25809d448bc2f47 |
 
 ---
