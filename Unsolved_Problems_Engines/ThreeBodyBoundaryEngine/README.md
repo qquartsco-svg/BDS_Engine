@@ -8,6 +8,9 @@
 
 **ThreeBodyBoundaryEngine**은 삼체 문제를 경계 정합 관점에서 **원인 분석**하는 독립 엔진 모듈입니다.
 
+> **핵심 용도**: **실패 가능성 평가 및 실패 원인 추적**  
+> 이 엔진은 시스템이 붕괴할 가능성을 정량화하고, 실패 원인을 구조적으로 추적합니다.
+
 > **⚠️ 아키텍처 원칙**: 이 엔진은 "원인 분석 전용"입니다. 해결 탐색 기능은 별도 모듈로 분리됩니다.
 > "진단서(원인)와 처방전(해결)은 분리되어야 함" - [아키텍처 철학](./docs/ARCHITECTURE_PHILOSOPHY.md)
 
@@ -208,6 +211,7 @@ core_strength = boundary_to_core_strength(boundary)
 - [수학적 기초](./docs/MATHEMATICAL_FOUNDATION.md)
 - [사용 예제](./examples/)
 - [활용 분석 및 발전 방향](./docs/APPLICATION_ANALYSIS.md) ⭐ NEW
+- [실패 가능성 및 실패 추적 분석](./docs/FAILURE_ANALYSIS.md) ⭐ 핵심 용도
 
 ---
 
