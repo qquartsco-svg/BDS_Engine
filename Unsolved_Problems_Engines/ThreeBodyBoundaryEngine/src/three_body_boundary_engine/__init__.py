@@ -26,14 +26,11 @@ from .models import (
     ThreeBodySystem,
     StabilityAnalysis,
     BoundaryDynamics,
-    LagrangeAnalysis,
-    RecoveryResult,
-    StabilizationResult,
-    CorrectionResult
+    LagrangeAnalysis
 )
 from .point import Point
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __all__ = [
     "ThreeBodyBoundaryEngine",
     "ThreeBodyConfig",
@@ -42,9 +39,6 @@ __all__ = [
     "ThreeBodySystem",
     "StabilityAnalysis",
     "BoundaryDynamics",
-    "LagrangeAnalysis",
-    "RecoveryResult",
-    "StabilizationResult",
-    "CorrectionResult"
+    "LagrangeAnalysis"
 ]
 
