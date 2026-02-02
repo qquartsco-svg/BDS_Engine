@@ -13,10 +13,8 @@ import math
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root / "src"))
 
-from three_body_boundary_engine.boundary_convergence_adapter import (
-    BoundaryConvergenceAdapter
-)
-from three_body_boundary_engine import Point
+from three_body_boundary_engine.boundary_convergence_adapter import BoundaryConvergenceAdapter
+from three_body_boundary_engine.point import Point
 
 
 def test_boundary_convergence():

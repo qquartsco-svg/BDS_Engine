@@ -13,11 +13,8 @@ import math
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root / "src"))
 
-from three_body_boundary_engine import (
-    GravityCalculator,
-    Body,
-    Point
-)
+from three_body_boundary_engine.gravity_calculator import GravityCalculator
+from three_body_boundary_engine import Body, Point
 
 
 def test_gravity_calculator():
