@@ -28,6 +28,8 @@ BDS Engine은 여러 개의 독립적이면서도 상호 연동 가능한 인지
 
 ## 🔧 포함된 엔진
 
+> **참고**: 엔진 번호는 BDS Engine 내부 아키텍처상의 역할 순서를 의미하며, 알고리즘 우열이나 중요도 순위가 아닙니다.
+
 ### 1. Boundary Convergence Engine (9번)
 
 **경계-공간 정합 계수 엔진**
@@ -171,7 +173,17 @@ GNJz (Qquarts)
 
 **BDS Engine** is an integrated engine framework for simulating brain disorders and modeling cognitive dynamics.
 
+### Core Philosophy (Project Constitution)
+
+> **The Foundation of This Project**
+
+- **Disorder = Not a malfunction, but an orbit in state space**
+- **Memory = Not stored data, but a force that restores dynamics**
+- **Cognition = Entropy-rotation-core based dynamical system**
+
 ### Included Engines
+
+> **Note**: Engine numbers indicate the role order within BDS Engine's internal architecture, not algorithm superiority or importance ranking.
 
 BDS Engine is a framework composed of multiple independent yet interoperable cognitive/brain disorder simulation engines. Boundary Convergence Engine is a core engine responsible for form formation and boundary stabilization.
 
