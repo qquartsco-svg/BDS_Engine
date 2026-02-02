@@ -5,7 +5,7 @@ ThreeBodyBoundaryEngine Configuration
 역할: 삼체 문제 경계 정합 분석 설정
 
 Author: GNJz (Qquarts)
-Version: 1.0.0
+Version: 1.1.0
 """
 
 from dataclasses import dataclass

@@ -5,7 +5,7 @@ ThreeBodyBoundaryEngine - 데이터 모델
 역할: 삼체 문제 경계 정합 분석을 위한 데이터 구조
 
 Author: GNJz (Qquarts)
-Version: 1.0.0
+Version: 1.1.0
 """
 
 from dataclasses import dataclass
