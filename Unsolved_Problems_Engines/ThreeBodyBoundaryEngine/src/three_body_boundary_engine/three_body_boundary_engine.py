@@ -16,7 +16,7 @@ ThreeBodyBoundaryEngine - 삼체 문제 경계 정합 분석 엔진
 - "왜 특정 지점에서 궤도가 붕괴하는가" 원인 분석
 
 Author: GNJz (Qquarts)
-Version: 1.0.0
+Version: 1.1.0 (원인 분석 전용)
 """
 
 from typing import List, Optional, Dict
