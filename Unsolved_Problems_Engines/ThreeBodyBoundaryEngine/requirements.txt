@@ -1,0 +1,8 @@
+# ThreeBodyBoundaryEngine - Requirements
+# 독립 모듈이므로 외부 의존성 없음
+
+# 표준 라이브러리만 사용:
+# - math
+# - typing
+# - dataclasses
+
