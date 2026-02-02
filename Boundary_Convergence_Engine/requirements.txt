@@ -1,0 +1,6 @@
+# Boundary Convergence Engine Requirements
+# 표준 라이브러리만 사용 (Standard library only)
+# 추가 의존성 없음 (No additional dependencies)
+
+# Python 3.8+ required
+
