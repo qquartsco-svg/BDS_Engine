@@ -55,6 +55,10 @@ class InteriorDensityEstimator:
         interior_points = []
         grid_size = int(math.sqrt(density * math.pi * max_radius**2))
         
+        # grid_size가 0이면 최소 1로 설정
+        if grid_size == 0:
+            grid_size = 1
+        
         for i in range(-grid_size, grid_size + 1):
             for j in range(-grid_size, grid_size + 1):
                 x = center.x + (i / grid_size) * max_radius * 0.9
