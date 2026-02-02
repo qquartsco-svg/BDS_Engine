@@ -26,7 +26,10 @@ from .models import (
     ThreeBodySystem,
     StabilityAnalysis,
     BoundaryDynamics,
-    LagrangeAnalysis
+    LagrangeAnalysis,
+    RecoveryResult,
+    StabilizationResult,
+    CorrectionResult
 )
 from .point import Point
 
@@ -39,6 +42,9 @@ __all__ = [
     "ThreeBodySystem",
     "StabilityAnalysis",
     "BoundaryDynamics",
-    "LagrangeAnalysis"
+    "LagrangeAnalysis",
+    "RecoveryResult",
+    "StabilizationResult",
+    "CorrectionResult"
 ]
 

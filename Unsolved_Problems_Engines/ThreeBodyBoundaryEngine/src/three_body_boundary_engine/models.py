@@ -85,3 +85,52 @@ class LagrangeAnalysis:
     stability_map: Dict[str, float]  # 각 라그랑주 점의 안정성 점수
     boundary_formation: Dict[str, StabilityAnalysis]  # 각 라그랑주 점의 경계 형성 분석
 
+
+@dataclass
+class RecoveryResult:
+    """경계 정합 복구 결과"""
+    success: bool  # 복구 성공 여부
+    initial_mismatch: float  # 초기 불일치
+    final_mismatch: float  # 최종 불일치
+    improvement: float  # 개선 정도 (initial - final)
+    iterations: int  # 반복 횟수
+    stability_before: float  # 복구 전 안정성 점수
+    stability_after: float  # 복구 후 안정성 점수
+    
+    def improvement_rate(self) -> float:
+        """개선율 계산 (0.0 ~ 1.0)"""
+        if self.initial_mismatch == 0:
+            return 0.0
+        return min(1.0, self.improvement / self.initial_mismatch)
+
+
+@dataclass
+class StabilizationResult:
+    """안정화 결과"""
+    success: bool  # 안정화 성공 여부
+    initial_stability: float  # 초기 안정성 점수
+    final_stability: float  # 최종 안정성 점수
+    optimized_system: Optional[ThreeBodySystem]  # 최적화된 시스템
+    adjustment_magnitude: float  # 조정 크기
+    lagrange_point_used: Optional[str]  # 사용된 라그랑주 점 (L4, L5 등)
+    
+    def stability_improvement(self) -> float:
+        """안정성 개선 정도"""
+        return self.final_stability - self.initial_stability
+
+
+@dataclass
+class CorrectionResult:
+    """동적 보정 결과"""
+    corrections_applied: int  # 적용된 보정 횟수
+    collapse_delayed: bool  # 붕괴 지연 여부
+    final_stability: float  # 최종 안정성 점수
+    correction_history: List[float]  # 보정 이력 (각 시간 단계의 불일치)
+    time_steps: List[float]  # 시간 단계
+    
+    def average_mismatch(self) -> float:
+        """평균 불일치"""
+        if not self.correction_history:
+            return 0.0
+        return sum(self.correction_history) / len(self.correction_history)
+
