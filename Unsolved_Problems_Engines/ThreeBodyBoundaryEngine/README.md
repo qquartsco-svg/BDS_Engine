@@ -207,6 +207,7 @@ core_strength = boundary_to_core_strength(boundary)
 - [API Reference](./docs/API_REFERENCE.md)
 - [수학적 기초](./docs/MATHEMATICAL_FOUNDATION.md)
 - [사용 예제](./examples/)
+- [활용 분석 및 발전 방향](./docs/APPLICATION_ANALYSIS.md) ⭐ NEW
 
 ---
 
