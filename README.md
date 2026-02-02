@@ -14,9 +14,11 @@
 
 ## 🎯 프로젝트 개요
 
-BDS Engine은 다양한 뇌 질환(ADHD, ASD, PTSD, 치매, 알츠하이머 등)을 물리학적 동역학으로 모델링하는 엔진 모음입니다.
+BDS Engine은 여러 개의 독립적이면서도 상호 연동 가능한 인지/뇌질환 시뮬레이션 엔진들로 구성된 프레임워크입니다. 다양한 뇌 질환(ADHD, ASD, PTSD, 치매, 알츠하이머 등)을 물리학적 동역학으로 모델링합니다.
 
 ### 핵심 철학
+
+> **이 프로젝트의 헌법**
 
 - **질환 = 고장이 아니라 상태공간 상의 궤도**
 - **기억 = 저장된 데이터가 아니라 동역학을 되돌리는 힘**
@@ -30,9 +32,14 @@ BDS Engine은 다양한 뇌 질환(ADHD, ASD, PTSD, 치매, 알츠하이머 등)
 
 **경계-공간 정합 계수 엔진**
 
+BDS Engine 내에서 형태 형성과 경계 안정화를 담당하는 핵심 엔진입니다.
+
 - 경계와 공간의 정합 과정을 동역학적으로 모델링
 - π의 수렴 과정을 경계-공간 정합으로 재해석
 - 인지 공간 형성 시뮬레이션
+
+> ⚠️ **중요 명확화**: Boundary Convergence Engine은 **π(원주율)를 계산하거나 근사하는 수학 엔진이 아닙니다**.  
+> 본 엔진은 경계(boundary)와 내부 공간(space)이 상호작용하며 형태가 안정화되는 **동역학적 과정**을 시뮬레이션합니다.
 
 **위치**: [`Boundary_Convergence_Engine/`](./Boundary_Convergence_Engine/)
 
@@ -70,7 +77,8 @@ from boundary_convergence_engine import (
 )
 
 # 엔진 생성
-engine = BoundaryConvergenceEngine()
+config = BoundaryConvergenceConfig()
+engine = BoundaryConvergenceEngine(config)
 
 # 수렴 실행
 result = engine.converge()
@@ -78,6 +86,7 @@ result = engine.converge()
 # 결과 확인
 print(f"수렴 완료: {result.converged}")
 print(f"최종 불일치: {result.mismatch}")
+print(f"경계 점 개수: {result.boundary_points}")
 ```
 
 자세한 사용법: [Boundary Convergence Engine 사용 예제](./Boundary_Convergence_Engine/USAGE_EXAMPLES.md)
@@ -139,6 +148,8 @@ GNJz (Qquarts)
 
 ### Included Engines
 
+BDS Engine is a framework composed of multiple independent yet interoperable cognitive/brain disorder simulation engines. Boundary Convergence Engine is a core engine responsible for form formation and boundary stabilization.
+
 #### 1. Boundary Convergence Engine (No. 9)
 
 **Boundary-Space Alignment Coefficient Engine**
@@ -146,6 +157,9 @@ GNJz (Qquarts)
 - Dynamically models the alignment process between boundaries and space
 - Reinterprets π convergence as boundary-space alignment
 - Simulates cognitive space formation
+
+> ⚠️ **Important Clarification**: Boundary Convergence Engine does **NOT** compute or approximate π numerically.  
+> It simulates the dynamical process by which boundaries and interior space interact and stabilize into coherent forms.
 
 **Location**: [`Boundary_Convergence_Engine/`](./Boundary_Convergence_Engine/)
 
@@ -171,14 +185,21 @@ GNJz (Qquarts)
 ### Quick Start
 
 ```python
-from boundary_convergence_engine import BoundaryConvergenceEngine
+from boundary_convergence_engine import (
+    BoundaryConvergenceEngine,
+    BoundaryConvergenceConfig
+)
 
-engine = BoundaryConvergenceEngine()
+config = BoundaryConvergenceConfig()
+engine = BoundaryConvergenceEngine(config)
 result = engine.converge()
 
 print(f"Converged: {result.converged}")
 print(f"Final Mismatch: {result.mismatch}")
 ```
+
+> ⚠️ **Important Clarification**: Boundary Convergence Engine does **NOT** compute or approximate π numerically.  
+> It simulates the dynamical process by which boundaries and interior space interact and stabilize into coherent forms.
 
 ### Documentation
 
