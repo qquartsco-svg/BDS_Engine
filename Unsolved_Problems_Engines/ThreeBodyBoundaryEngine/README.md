@@ -112,9 +112,35 @@ print(f"불일치(Δ): {analysis.mismatch:.6f}")
 
 ---
 
+## 🏛️ 레이어 아키텍처
+
+이 엔진은 **3개의 레이어**로 구성되어 있으며, 각 레이어는 독립적으로 동작하면서도 통합 가능합니다.
+
+### 레이어 구조 개요
+
+```
+L0: 원인 분석 레이어 (법칙)
+  └─ ThreeBodyBoundaryEngine
+  └─ "왜 실패하는지" 분석
+
+L1: 실패 추적 레이어 (기억)
+  └─ FailureAtlas
+  └─ "어디서 실패하는지" 기록
+
+L2: 실패 학습 레이어 (본능)
+  └─ FailureBiasConverter
+  └─ "어디를 피해야 하는지" 학습
+```
+
+**자세한 내용**: [레이어 구조 다이어그램](./docs/LAYER_ARCHITECTURE_DIAGRAM.md) | [전체 레이어 구조 분석](./docs/LAYER_ARCHITECTURE_ANALYSIS.md)
+
+---
+
 ## 📊 주요 기능
 
-### 1. 궤도 안정성 분석
+### L0: 원인 분석 레이어
+
+#### 1. 궤도 안정성 분석
 
 ```python
 analysis = engine.analyze_orbit_stability(system)
@@ -124,7 +150,7 @@ analysis = engine.analyze_orbit_stability(system)
 # - 경계 정합 실패 메커니즘 규명
 ```
 
-### 2. 경계 형성 과정 관찰
+#### 2. 경계 형성 과정 관찰
 
 ```python
 time_steps = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
@@ -136,7 +162,7 @@ dynamics = engine.observe_boundary_formation(system, time_steps)
 collapse_point = dynamics.get_collapse_point()
 ```
 
-### 3. 라그랑주 점 경계 관찰
+#### 3. 라그랑주 점 경계 관찰
 
 ```python
 lagrange_analysis = engine.observe_lagrange_points(system)
@@ -148,7 +174,7 @@ for lp in lagrange_analysis.lagrange_points:
     print(f"{lp.lagrange_type}: {lp.stability}")
 ```
 
-### 4. 안정/불안정 조건 비교
+#### 4. 안정/불안정 조건 비교
 
 ```python
 # 다양한 초기 조건
@@ -159,6 +185,162 @@ results = engine.compare_stability_conditions(systems)
 # - "어떤 초기 조건이 안정/불안정한가?"
 # - 안정성 패턴 식별
 ```
+
+### L1: 실패 추적 레이어
+
+#### 1. 실패 기록 및 구조화
+
+```python
+from three_body_boundary_engine import FailureAtlas
+
+atlas = FailureAtlas()
+
+# L0 분석 결과를 실패 기록으로 변환
+record = atlas.record_failure(analysis, system, threshold=0.1)
+
+if record:
+    print(f"붕괴 모드: {record.collapse_mode.value}")
+    print(f"심각도: {record.collapse_severity:.3f}")
+```
+
+**알고리즘**:
+- 조건 서명 생성: 질량 비율과 거리 패턴을 문자열로 인코딩
+- 붕괴 모드 분류: 발산/불일치/수렴 실패 자동 판정
+- 실패 유형별 분류: Failure Manifold에 구조화하여 저장
+
+**자세한 내용**: [API Reference - L1](./docs/API_REFERENCE.md#l1-실패-추적-레이어)
+
+#### 2. 유사한 실패 패턴 찾기
+
+```python
+# 유사한 실패 패턴 검색
+similar = atlas.get_similar_failures(
+    condition_signature=record.condition_signature,
+    similarity_threshold=0.5
+)
+```
+
+**알고리즘**:
+- 조건 서명 유사도 계산: 공통 부분 비율 기반
+- 실패 패턴 그룹화: 구조적 유사성 발견
+
+#### 3. 실패 통계 분석
+
+```python
+stats = atlas.get_failure_statistics()
+# - 총 실패 횟수
+# - 붕괴 모드별 분류
+# - 실패 유형별 분류
+```
+
+**핵심 가치**: "혼돈은 랜덤이 아니다" 증명 가능
+
+---
+
+### L2: 실패 학습 레이어
+
+#### 1. 실패 → 편향 변환
+
+```python
+from three_body_boundary_engine import FailureBiasConverter
+
+converter = FailureBiasConverter()
+bias = converter.convert_failure_to_bias(atlas)
+```
+
+**알고리즘**:
+- 위험 지도 생성: 실패 빈도(60%) + 심각도(40%) 가중 결합
+- 붕괴 모드별 위험도: 각 모드의 실패율 계산
+- 탐색 편향 생성: "이 방향은 위험하다" 내부 지형 생성
+
+**수식**:
+```
+위험도 = (빈도_위험도 × 0.6) + (심각도_위험도 × 0.4)
+```
+
+**자세한 내용**: [API Reference - L2](./docs/API_REFERENCE.md#l2-실패-학습-레이어)
+
+#### 2. 조건 회피 판정
+
+```python
+should_avoid = converter.should_avoid_condition(
+    bias=bias,
+    condition_signature=condition_sig,
+    threshold=0.3
+)
+```
+
+**알고리즘**:
+- 위험도 조회: 조건 서명별 위험도 확인
+- 임계값 비교: threshold 이상이면 회피 권장
+
+#### 3. 안전한 조건 필터링
+
+```python
+safe_conditions = converter.get_safe_conditions(
+    bias=bias,
+    candidate_conditions=candidates,
+    threshold=0.3
+)
+```
+
+**알고리즘**:
+- 후보 조건 평가: 각 조건의 위험도 확인
+- 안전 조건 필터링: threshold 미만만 반환
+
+#### 4. STDP 유사 메커니즘
+
+```python
+# 새로운 실패 기록으로 편향 업데이트
+updated_bias = converter.update_bias_with_new_failure(
+    bias=bias,
+    new_record=new_record
+)
+```
+
+**알고리즘**:
+- 위험도 감쇠: 기존 위험도에 `risk_decay_factor` 적용
+- 최신 실패 반영: 새로운 실패 기록의 위험도와 비교하여 큰 값 선택
+- STDP 유사: 최근 실패일수록 더 큰 영향
+
+**핵심 가치**: "초반 실패 → 후반 성공률 증가" 구조 성립
+
+---
+
+### 통합 사용 예제
+
+```python
+from three_body_boundary_engine import (
+    ThreeBodyBoundaryEngine,
+    FailureAtlas,
+    FailureBiasConverter,
+    ThreeBodySystem,
+    Body,
+    Point
+)
+
+# 레이어 생성
+engine = ThreeBodyBoundaryEngine()  # L0
+atlas = FailureAtlas()              # L1
+converter = FailureBiasConverter()  # L2
+
+# 시스템 분석
+system = ThreeBodySystem(...)
+
+# L0 → L1 → L2 파이프라인
+analysis = engine.analyze_orbit_stability(system)  # L0
+atlas.record_failure(analysis, system)            # L1
+bias = converter.convert_failure_to_bias(atlas)   # L2
+
+# 위험한 조건 회피
+should_avoid = converter.should_avoid_condition(
+    bias=bias,
+    condition_signature=condition_sig,
+    threshold=0.3
+)
+```
+
+**자세한 내용**: [사용 가이드](./docs/USAGE_GUIDE.md) | [통합 예제](./examples/l2_bias_example.py)
 
 ---
 
@@ -285,10 +467,16 @@ GNJz (Qquarts)
 
 ## 📝 버전
 
-**Version**: 1.1.0 (원인 분석 전용)  
-**Last Updated**: 2026-02-02
+**Version**: 1.2.0 (레이어 확장)  
+**Last Updated**: 2026-02-03
 
 ### 버전 히스토리
+
+- **v1.2.0** (2026-02-03): 레이어 확장
+  - L1 레이어 추가 (실패 추적)
+  - L2 레이어 추가 (실패 학습)
+  - 레이어 구조 완성 (L0 + L1 + L2)
+  - 문서화 완성 (API, 사용 가이드, 성능 벤치마크)
 
 - **v1.1.0** (2026-02-02): 원인 분석과 해결 탐색 분리
   - 해결 탐색 기능 제거 (별도 모듈로 분리)
@@ -366,5 +554,5 @@ print(f"Stability Score: {analysis.stability_score:.3f}")
 ---
 
 **Author**: GNJz (Qquarts)  
-**Version**: 1.1.0 (Causal Analysis Only)
+**Version**: 1.2.0 (Layer Architecture)
 
