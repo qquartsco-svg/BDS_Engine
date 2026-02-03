@@ -16,7 +16,7 @@ ThreeBodyBoundaryEngine - 실패 구조 축적 레이어 (L1)
 - 실패를 "기억"으로 변환
 
 Author: GNJz (Qquarts)
-Version: 1.1.0
+Version: 1.2.0
 """
 
 from dataclasses import dataclass, field

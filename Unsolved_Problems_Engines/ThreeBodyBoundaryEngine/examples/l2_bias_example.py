@@ -4,7 +4,7 @@ ThreeBodyBoundaryEngine - L2 레이어 예제
 L0 + L1 + L2 통합 예제
 
 Author: GNJz (Qquarts)
-Version: 1.1.0
+Version: 1.2.0
 """
 
 import sys

@@ -2,7 +2,7 @@
 모든 테스트 실행
 
 Author: GNJz (Qquarts)
-Version: 1.0.0
+Version: 1.2.0
 """
 
 import sys

@@ -9,7 +9,7 @@ V(x,y) = -G * Σ(m_i / r_i)
 ρ(x,y) = V(x,y) / V_max  (정규화)
 
 Author: GNJz (Qquarts)
-Version: 1.1.0
+Version: 1.2.0
 """
 
 import math

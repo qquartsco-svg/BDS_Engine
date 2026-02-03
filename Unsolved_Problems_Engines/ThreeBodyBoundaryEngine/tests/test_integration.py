@@ -4,7 +4,7 @@ Integration Test - 통합 테스트
 원인 분석 철학 검증 및 실제 사용 시나리오 테스트
 
 Author: GNJz (Qquarts)
-Version: 1.0.0
+Version: 1.2.0
 """
 
 import sys

@@ -2,7 +2,7 @@
 ThreeBodyBoundaryEngine - 테스트
 
 Author: GNJz (Qquarts)
-Version: 1.0.0
+Version: 1.2.0
 """
 
 import sys

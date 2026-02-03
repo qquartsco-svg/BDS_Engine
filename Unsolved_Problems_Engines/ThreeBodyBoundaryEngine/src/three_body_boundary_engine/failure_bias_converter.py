@@ -22,7 +22,7 @@ ThreeBodyBoundaryEngine - 실패 학습 레이어 (L2)
 - STDP와 유사하지만 보상이 아니라 파괴 회피
 
 Author: GNJz (Qquarts)
-Version: 1.1.0
+Version: 1.2.0
 """
 
 from dataclasses import dataclass, field

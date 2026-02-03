@@ -12,7 +12,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="three-body-boundary-engine",
-    version="1.0.0",
+    version="1.2.0",
     author="GNJz (Qquarts)",
     author_email="qquarts@example.com",
     description="Three-Body Problem Boundary Convergence Analysis Engine",

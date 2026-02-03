@@ -8,7 +8,7 @@ Boundary Convergence Adapter - 경계 수렴 엔진 어댑터
 독립적으로 재구현하여 외부 의존성을 제거합니다.
 
 Author: GNJz (Qquarts)
-Version: 1.1.0
+Version: 1.2.0
 """
 
 import math

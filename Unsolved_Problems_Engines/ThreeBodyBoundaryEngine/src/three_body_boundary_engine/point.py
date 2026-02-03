@@ -2,7 +2,7 @@
 Point - 2D 점 모델
 
 Author: GNJz (Qquarts)
-Version: 1.1.0
+Version: 1.2.0
 """
 
 import math

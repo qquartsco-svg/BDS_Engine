@@ -26,7 +26,7 @@ ThreeBodyBoundaryEngine - 삼체 문제 경계 정합 분석 엔진
 - 궤도 시뮬레이션 ❌ → 공간 구조 분석 ✅
 
 Author: GNJz (Qquarts)
-Version: 1.1.0 (원인 분석 전용)
+Version: 1.2.0 (원인 분석 전용)
 """
 
 from typing import List, Optional, Dict

@@ -4,7 +4,7 @@ ThreeBodyBoundaryEngine - Failure Bias Converter 테스트
 L2 레이어 (실패 학습 레이어) 테스트
 
 Author: GNJz (Qquarts)
-Version: 1.1.0
+Version: 1.2.0
 """
 
 import unittest

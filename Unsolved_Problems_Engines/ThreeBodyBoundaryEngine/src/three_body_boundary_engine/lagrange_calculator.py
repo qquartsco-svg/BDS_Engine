@@ -9,7 +9,7 @@ Lagrange Calculator - 라그랑주 점 계산
 - L4, L5: 안정 (equilateral triangle)
 
 Author: GNJz (Qquarts)
-Version: 1.1.0
+Version: 1.2.0
 """
 
 import math
