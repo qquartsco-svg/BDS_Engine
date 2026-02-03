@@ -30,13 +30,25 @@
 - L1 (Failure Atlas) 레이어 구현 완료
 - L2 (Failure Bias Converter) 레이어 구현 완료
 - 전력 효율 분석 문서 추가
-- 신경생물학적 기초 분석 추가
+- 신경생물학적 기초 분석 문서 추가
 - 개념 및 수식 참조 가이드 추가
 - L3 레이어 개념 설계 추가
+- 언어 정제 (확정적 표현 제거, 실험적 상태 명시)
+- 버전 관리 개선 (Single Source of Truth)
+- 주석 및 개념 최종 점검 완료
+
+**Git 정보**:
+```
+COMMIT_HASH: 96dc834d3448efffaeedb4c5ec58e05c6c33ddc7
+BRANCH: main
+TAG: v1.2.0 (생성 완료)
+```
 
 **해시 기록**:
 ```
-[대기 중 - PHAM 블록체인 서명 필요]
+PHAM_HASH: [대기 중 - PHAM 블록체인 서명 필요]
+TX_ID: [대기 중]
+TIMESTAMP: [대기 중]
 ```
 
 **주요 파일**:
@@ -45,6 +57,18 @@
 - `docs/POWER_EFFICIENCY_ANALYSIS.md`
 - `docs/NEUROBIOLOGICAL_FOUNDATION.md`
 - `docs/CONCEPT_FORMULA_REFERENCE.md`
+- `EXPERIMENTAL_STATUS.md`
+- `COMMENT_CONCEPT_REVIEW.md`
+- `CHANGELOG.md`
+
+**검증 상태**:
+- [x] 모든 테스트 통과 (21개)
+- [x] 주석 및 개념 점검 완료
+- [x] 문서 일관성 확인 완료
+- [x] 버전 번호 일관성 확인 완료
+- [x] CHANGELOG 업데이트 완료
+- [x] Git 태그 생성 완료
+- [ ] PHAM 블록체인 서명 (대기 중)
 
 **블록체인 서명 상태**: ⏳ 대기 중
 
