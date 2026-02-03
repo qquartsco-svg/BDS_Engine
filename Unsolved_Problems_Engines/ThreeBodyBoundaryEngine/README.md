@@ -207,7 +207,14 @@ core_strength = boundary_to_core_strength(boundary)
 
 ## 📚 문서
 
-- [API Reference](./docs/API_REFERENCE.md)
+### 핵심 문서
+- [API Reference](./docs/API_REFERENCE.md) ⭐ 완전한 API 명세
+- [사용 가이드](./docs/USAGE_GUIDE.md) ⭐ 레이어별 사용법 및 베스트 프랙티스
+- [레이어 구조 다이어그램](./docs/LAYER_ARCHITECTURE_DIAGRAM.md) ⭐ 레이어 간 데이터 흐름
+- [전체 레이어 구조 분석](./docs/LAYER_ARCHITECTURE_ANALYSIS.md) ⭐ 레이어 맵 및 설계 철학
+- [에러 처리 가이드](./docs/ERROR_HANDLING.md) ⭐ 에러 처리 및 복구 전략
+
+### 추가 문서
 - [수학적 기초](./docs/MATHEMATICAL_FOUNDATION.md)
 - [사용 예제](./examples/)
 - [활용 분석 및 발전 방향](./docs/APPLICATION_ANALYSIS.md) ⭐ NEW
