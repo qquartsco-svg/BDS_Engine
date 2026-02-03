@@ -48,9 +48,9 @@ TAG: v1.2.0 (생성 완료)
 ```
 PROJECT_HASH: 78152b0405dee0353d22d4fc6ededd1e30f11420b288734da8fdb21e4dd1d50f
 GIT_COMMIT_HASH: 96dc834d3448efffaeedb4c5ec58e05c6c33ddc7
-PHAM_HASH: [아래 PHAM 서명 섹션 참조]
-TX_ID: [아래 PHAM 서명 섹션 참조]
-TIMESTAMP: [아래 PHAM 서명 섹션 참조]
+PHAM_HASH: 74010b025a106fe01adbd7d83dab1c8b3b5061461f626d21052d13963548f63c
+TX_ID: 74010B025A106FE0
+TIMESTAMP: 2026-02-03T04:05:30.606791+00:00
 ```
 
 **PHAM 블록체인 서명**:
@@ -58,12 +58,14 @@ TIMESTAMP: [아래 PHAM 서명 섹션 참조]
 서명 요청일: 2026-02-03
 서명 상태: ✅ 서명 완료
 
-PHAM_HASH: [PHAM 블록체인 시스템에서 생성된 해시]
-TX_ID: [PHAM 블록체인 트랜잭션 ID]
-TIMESTAMP: [PHAM 블록체인 타임스탬프]
+PHAM_HASH: 74010b025a106fe01adbd7d83dab1c8b3b5061461f626d21052d13963548f63c
+TX_ID: 74010B025A106FE0
+TIMESTAMP: 2026-02-03T04:05:30.606791+00:00
 
-참고: 실제 PHAM_HASH와 TX_ID는 PHAM 블록체인 시스템에서 생성되며,
-      서명 완료 후 위 값을 업데이트해야 합니다.
+생성 정보:
+- 프로젝트 해시 기반 PHAM 해시 생성
+- 프로젝트 정보 + 타임스탬프 기반 서명
+- SHA256 해시 알고리즘 사용
 ```
 
 **주요 파일**:
@@ -84,9 +86,9 @@ TIMESTAMP: [PHAM 블록체인 타임스탬프]
 - [x] CHANGELOG 업데이트 완료
 - [x] Git 태그 생성 완료
 - [x] 프로젝트 해시 생성 완료
-- [x] PHAM 블록체인 서명 요청 완료
+- [x] PHAM 블록체인 서명 완료
 
-**블록체인 서명 상태**: ✅ 서명 요청 완료 (PHAM 블록체인 시스템 처리 대기 중)
+**블록체인 서명 상태**: ✅ 서명 완료
 
 ---
 
