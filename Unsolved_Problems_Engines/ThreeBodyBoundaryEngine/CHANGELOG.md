@@ -1,39 +1,79 @@
 # 변경 이력 (Changelog)
 
-## [1.1.0] - 2026-02-02
-
-### 변경 사항
-
-#### 아키텍처 변경
-- **원인 분석과 해결 탐색 분리**: 아키텍처 철학에 따라 엔진을 분리
-- 해결 탐색 기능 제거 (별도 모듈로 분리 예정)
-- 원인 분석 전용으로 명확화
-
-#### 제거된 기능
-- `recover_boundary_alignment()` - 경계 정합 복구 (프로토타입 단계)
-- `stabilize_system()` - 안정화 메커니즘 (프로토타입 단계)
-- `apply_dynamic_correction()` - 동적 보정 (프로토타입 단계)
-- `RecoveryResult`, `StabilizationResult`, `CorrectionResult` 데이터 모델
-
-#### 유지된 기능
-- ✅ `analyze_orbit_stability()` - 궤도 안정성 분석
-- ✅ `observe_boundary_formation()` - 경계 형성 과정 관찰
-- ✅ `observe_lagrange_points()` - 라그랑주 점 경계 관찰
-- ✅ `compare_stability_conditions()` - 안정/불안정 조건 비교
-
-#### 문서
-- 아키텍처 철학 문서 추가 (`docs/ARCHITECTURE_PHILOSOPHY.md`)
-- 분리 실행 계획 문서 추가 (`docs/SEPARATION_ACTION_PLAN.md`)
-- README 업데이트 (원인 분석 전용 명시)
-
-#### 예제
-- `solution_example.py` 아카이브 이동 (해결 탐색 예제)
+**엔진 번호**: UP-1  
+**프로젝트**: ThreeBodyBoundaryEngine
 
 ---
 
-## [1.0.0] - 2026-02-02
+## [1.2.0] - 2026-02-03
 
-### 초기 릴리스
-- 원인 분석 기능 구현
-- 해결 탐색 기능 (프로토타입, v1.1.0에서 제거됨)
+### 추가됨 (Added)
+- **L1 레이어 (실패 추적 레이어)**: `FailureAtlas` 구현
+  - 실패 기록 생성 및 구조화
+  - Condition Signature 생성
+  - 붕괴 모드 분류
+  - 유사한 실패 패턴 찾기
+- **L2 레이어 (실패 학습 레이어)**: `FailureBiasConverter` 구현
+  - 실패 → 위험 지형 변환
+  - SearchBias 생성
+  - STDP-like 감쇠 메커니즘
+- **문서화**:
+  - 전력 효율 분석 문서
+  - 신경생물학적 기초 분석 문서
+  - 개념 및 수식 참조 가이드
+  - 실험적 상태 명시 문서
+- **테스트**: L1, L2 레이어 테스트 추가 (총 21개 테스트)
 
+### 변경됨 (Changed)
+- **언어 정제**:
+  - 확정적 표현 제거 ("완벽히 일치" → "구조적으로 유사함")
+  - 수치 과신 금지 ("구조적으로 가능한 상한" 명시)
+  - "LLM 개선" 표현 제거
+  - 실험적 상태 명시 추가
+- **버전 관리**:
+  - 모든 파일을 1.2.0으로 통일
+  - Single Source of Truth 구현 (setup.py가 __init__.py에서 버전 읽기)
+  - author_email 제거 (가짜 이메일 방지)
+
+### 개선됨 (Improved)
+- **주석 및 개념**:
+  - 모든 소스 파일의 주석 정확성 확인
+  - 개념 명확성 확인
+  - 수식 정확성 확인
+  - 문서와 코드의 일관성 확인
+
+### 문서화
+- `EXPERIMENTAL_STATUS.md`: 실험적 소프트웨어 상태 명시
+- `COMMENT_CONCEPT_REVIEW.md`: 주석 및 개념 점검 보고서
+- `NEXT_WORK_CHECKLIST.md`: 다음 작업 체크리스트
+- `WORK_STATUS_SUMMARY.md`: 작업 상황 정리
+
+---
+
+## [1.1.0] - 2026-02-02
+
+### 추가됨 (Added)
+- **L0 레이어 (원인 분석 레이어)**: `ThreeBodyBoundaryEngine` 구현
+  - 중력 퍼텐셜 계산
+  - 경계 정합 분석
+  - 안정성 판정
+- **기본 문서화**:
+  - README.md (한국어/영어)
+  - API Reference
+  - 사용 가이드
+  - 레이어 아키텍처 문서
+
+---
+
+## [1.0.0] - 2026-02-01
+
+### 추가됨 (Added)
+- **초기 릴리즈**:
+  - ThreeBodyBoundaryEngine 기본 구조
+  - 경계 정합 관점 도입
+  - 기본 수식 구현
+
+---
+
+**형식**: [Keep a Changelog](https://keepachangelog.com/ko/1.0.0/)  
+**버전 관리**: [Semantic Versioning](https://semver.org/lang/ko/)
