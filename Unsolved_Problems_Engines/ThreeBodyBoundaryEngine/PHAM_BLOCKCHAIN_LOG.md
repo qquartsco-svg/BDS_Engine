@@ -46,9 +46,11 @@ TAG: v1.2.0 (생성 완료)
 
 **해시 기록**:
 ```
-PHAM_HASH: [대기 중 - PHAM 블록체인 서명 필요]
-TX_ID: [대기 중]
-TIMESTAMP: [대기 중]
+PROJECT_HASH: 78152b0405dee0353d22d4fc6ededd1e30f11420b288734da8fdb21e4dd1d50f
+GIT_COMMIT_HASH: 96dc834d3448efffaeedb4c5ec58e05c6c33ddc7
+PHAM_HASH: [PHAM 블록체인 서명 후 업데이트 예정]
+TX_ID: [PHAM 블록체인 서명 후 업데이트 예정]
+TIMESTAMP: [PHAM 블록체인 서명 후 업데이트 예정]
 ```
 
 **주요 파일**:
