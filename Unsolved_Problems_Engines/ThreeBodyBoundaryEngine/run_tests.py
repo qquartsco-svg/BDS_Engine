@@ -22,12 +22,32 @@ project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root / "src"))
 
 # 테스트 모듈 import
-from tests import test_three_body_boundary_engine
-from tests import test_failure_atlas
-from tests import test_failure_bias_converter
-from tests import test_integration
-from tests import test_gravity_calculator
-from tests import test_boundary_convergence
+import tests.test_three_body_boundary_engine
+import tests.test_failure_atlas
+import tests.test_failure_bias_converter
+import tests.test_integration
+import tests.test_gravity_calculator
+import tests.test_boundary_convergence
+
+# 함수 기반 테스트를 unittest로 변환하기 위한 래퍼
+import unittest
+from unittest import TestCase
+
+# 함수 기반 테스트를 TestCase로 변환
+class IntegrationTestWrapper(TestCase):
+    def test_causal_analysis_scenario(self):
+        tests.test_integration.test_causal_analysis_scenario()
+    
+    def test_lagrange_stability_comparison(self):
+        tests.test_integration.test_lagrange_stability_comparison()
+
+class GravityCalculatorTestWrapper(TestCase):
+    def test_gravity_calculator(self):
+        tests.test_gravity_calculator.test_gravity_calculator()
+
+class BoundaryConvergenceTestWrapper(TestCase):
+    def test_boundary_convergence(self):
+        tests.test_boundary_convergence.test_boundary_convergence()
 
 
 def print_header(title):
@@ -56,19 +76,30 @@ def run_all_tests():
     
     # 각 테스트 모듈 추가
     print_section("테스트 모듈 로드")
+    
+    # 클래스 기반 테스트
     modules = [
-        ("L0: 원인 분석 레이어", test_three_body_boundary_engine),
-        ("L1: 실패 추적 레이어", test_failure_atlas),
-        ("L2: 실패 학습 레이어", test_failure_bias_converter),
-        ("통합 테스트", test_integration),
-        ("유닛 테스트 (중력 계산기)", test_gravity_calculator),
-        ("유닛 테스트 (경계 수렴)", test_boundary_convergence),
+        ("L0: 원인 분석 레이어", tests.test_three_body_boundary_engine),
+        ("L1: 실패 추적 레이어", tests.test_failure_atlas),
+        ("L2: 실패 학습 레이어", tests.test_failure_bias_converter),
     ]
     
     for name, module in modules:
-        tests = loader.loadTestsFromModule(module)
-        suite.addTests(tests)
-        print(f"  ✅ {name}: {tests.countTestCases()}개 테스트 로드")
+        tests_obj = loader.loadTestsFromModule(module)
+        suite.addTests(tests_obj)
+        print(f"  ✅ {name}: {tests_obj.countTestCases()}개 테스트 로드")
+    
+    # 함수 기반 테스트 (래퍼 사용)
+    wrapper_modules = [
+        ("통합 테스트", IntegrationTestWrapper),
+        ("유닛 테스트 (중력 계산기)", GravityCalculatorTestWrapper),
+        ("유닛 테스트 (경계 수렴)", BoundaryConvergenceTestWrapper),
+    ]
+    
+    for name, wrapper_class in wrapper_modules:
+        tests_obj = loader.loadTestsFromTestCase(wrapper_class)
+        suite.addTests(tests_obj)
+        print(f"  ✅ {name}: {tests_obj.countTestCases()}개 테스트 로드")
     
     print(f"\n총 테스트 수: {suite.countTestCases()}개")
     
@@ -128,15 +159,15 @@ def run_all_tests():
     print(f"  실행 시간: {elapsed_time:.3f}초")
     print(f"  평균 시간: {elapsed_time / result.testsRun * 1000:.3f}ms/테스트")
     
-    # 레이어별 통계 (모듈별로 간단히 표시)
+    # 레이어별 통계
     print_section("레이어별 테스트 결과")
     
     # 모듈별 테스트 수 계산
-    l0_count = test_three_body_boundary_engine.TestThreeBodyBoundaryEngine.__dict__.get('__test__', {}).__len__() if hasattr(test_three_body_boundary_engine, 'TestThreeBodyBoundaryEngine') else 0
-    l1_count = loader.loadTestsFromModule(test_failure_atlas).countTestCases()
-    l2_count = loader.loadTestsFromModule(test_failure_bias_converter).countTestCases()
-    integration_count = loader.loadTestsFromModule(test_integration).countTestCases()
-    unit_count = loader.loadTestsFromModule(test_gravity_calculator).countTestCases() + loader.loadTestsFromModule(test_boundary_convergence).countTestCases()
+    l0_count = loader.loadTestsFromModule(tests.test_three_body_boundary_engine).countTestCases()
+    l1_count = loader.loadTestsFromModule(tests.test_failure_atlas).countTestCases()
+    l2_count = loader.loadTestsFromModule(tests.test_failure_bias_converter).countTestCases()
+    integration_count = loader.loadTestsFromTestCase(IntegrationTestWrapper).countTestCases()
+    unit_count = loader.loadTestsFromTestCase(GravityCalculatorTestWrapper).countTestCases() + loader.loadTestsFromTestCase(BoundaryConvergenceTestWrapper).countTestCases()
     
     print(f"  ✅ L0 (원인 분석): {l0_count}개 테스트")
     print(f"  ✅ L1 (실패 추적): {l1_count}개 테스트")

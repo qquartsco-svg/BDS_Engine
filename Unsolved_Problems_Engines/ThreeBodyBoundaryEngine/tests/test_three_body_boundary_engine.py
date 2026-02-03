@@ -6,6 +6,7 @@ Version: 1.0.0
 """
 
 import sys
+import unittest
 from pathlib import Path
 
 # 프로젝트 루트를 Python 경로에 추가
@@ -21,7 +22,7 @@ from three_body_boundary_engine import (
 )
 
 
-class TestThreeBodyBoundaryEngine:
+class TestThreeBodyBoundaryEngine(unittest.TestCase):
     """ThreeBodyBoundaryEngine 테스트"""
     
     def test_engine_initialization(self):
