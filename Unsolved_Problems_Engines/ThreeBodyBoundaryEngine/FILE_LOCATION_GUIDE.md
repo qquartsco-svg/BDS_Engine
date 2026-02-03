@@ -36,6 +36,15 @@ Unsolved_Problems_Engines/
     ├── setup.py (패키지 설정)
     ├── requirements.txt (의존성)
     └── .gitignore
+
+Unsolved_Problems_Engines/
+└── UP-2_BoundarySafeSearchEngine/
+    ├── docs/
+    │   └── UP-2_DESIGN.md (L3 설계 문서, 구현 대기)
+    ├── examples/ (향후)
+    ├── src/ (향후)
+    ├── tests/ (향후)
+    └── README.md (UP-2 개요)
 ```
 
 ---
