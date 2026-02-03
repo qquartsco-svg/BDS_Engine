@@ -214,6 +214,7 @@ core_strength = boundary_to_core_strength(boundary)
 - [실패 가능성 및 실패 추적 분석](./docs/FAILURE_ANALYSIS.md) ⭐ 핵심 용도
 - [실패 학습 메커니즘 분석](./docs/FAILURE_LEARNING_ANALYSIS.md) ⭐ STDP 유사 메커니즘
 - [로직 흐름 분석](./docs/LOGIC_FLOW_ANALYSIS.md) ⭐ 추적 → 학습 → 해결 탐색
+- [전체 레이어 구조 분석](./docs/LAYER_ARCHITECTURE_ANALYSIS.md) ⭐ L0~L4 레이어 맵
 
 ---
 
