@@ -1,96 +1,149 @@
-# PHAM Blockchain Log - ThreeBodyBoundaryEngine
+# PHAM Blockchain Hash Records
 
 **엔진 번호**: UP-1  
-**엔진 이름**: ThreeBodyBoundaryEngine  
-**최신 버전**: 1.1.0 (원인 분석 전용)  
-**최종 업데이트**: 2026-02-02
+**프로젝트**: ThreeBodyBoundaryEngine  
+**목적**: 모든 버전 업데이트의 블록체인 해시 기록
 
 ---
 
-## 파일 해시 기록
+## 📋 기록 원칙
 
-모든 파일의 SHA256 해시를 기록하여 저작권 및 무결성을 보장합니다.
-
-### v1.1.0 (2026-02-02) - 원인 분석 전용
-
-#### 소스 파일
-
-| 파일 경로 | SHA256 해시 |
-|-----------|-------------|
-| `src/three_body_boundary_engine/__init__.py` | 5ef9dcf5cb43b432b5b3ae4677683a4ccc00741a39eca9efb545058ebd7f7775 |
-| `src/three_body_boundary_engine/three_body_boundary_engine.py` | 6cbae783cd9bd75251a5c30a7b1f00db5f321a7bb9f9acfd9d972a42be75b454 |
-| `src/three_body_boundary_engine/config.py` | f65518b4040566386d4a3cb43683487aa6cfde550eb9e3acbd25c2324af852c3 |
-| `src/three_body_boundary_engine/models.py` | a4420331bfaa5e30d4a83e8909a3709cfcf9dfe636b7e8c0011b871fbc3b9036 |
-| `src/three_body_boundary_engine/point.py` | d5d6377618dbea88b14a4eecab9f497a0d823e1ae47f28e805f1a80501205716 |
-| `src/three_body_boundary_engine/gravity_calculator.py` | 3aeabb165d1c8a3869034b5187dee9f178d6ed4f96773c4e3b911aa10d3a7768 |
-| `src/three_body_boundary_engine/boundary_convergence_adapter.py` | 631439e00c833e814ec88c4332441454757d9318b7fa61af516d99b610019f6d |
-| `src/three_body_boundary_engine/lagrange_calculator.py` | f5d4898dc015d54660264afbd353773a41737cff088a49b29ff35d07a6539a7a |
-
-#### 문서 파일
-
-| 파일 경로 | SHA256 해시 |
-|-----------|-------------|
-| `README.md` | 8df3a49518a74e76c5f6a98a65ba0591bf4d0bce345f129ffb6167bf2bcedd68 |
-| `CHANGELOG.md` | 27c3c1b899462570c3201eb0ced6861007ca271c815d785a9b4107860c246122 |
-| `LICENSE` | 18556eb63192fdc742054834bcea409eedaa06cf061096cec25809d448bc2f47 |
+1. **모든 버전 업데이트마다 해시 기록**
+2. **주요 기능 추가/변경 시 해시 기록**
+3. **문서 업데이트 시 해시 기록**
+4. **블록체인 서명 전 필수 확인**
 
 ---
 
-## 버전 기록
+## 🔗 PHAM Blockchain
 
-### v1.1.0 (2026-02-02) - 원인 분석 전용
-
-**아키텍처 변경**
-
-- 원인 분석과 해결 탐색 분리
-- 해결 탐색 기능 제거 (별도 모듈로 분리 예정)
-- 원인 분석 전용으로 명확화
-
-**제거된 기능**
-- `recover_boundary_alignment()` - 경계 정합 복구
-- `stabilize_system()` - 안정화 메커니즘
-- `apply_dynamic_correction()` - 동적 보정
-- `RecoveryResult`, `StabilizationResult`, `CorrectionResult` 데이터 모델
-
-**유지된 기능**
-- ✅ `analyze_orbit_stability()` - 궤도 안정성 분석
-- ✅ `observe_boundary_formation()` - 경계 형성 과정 관찰
-- ✅ `observe_lagrange_points()` - 라그랑주 점 경계 관찰
-- ✅ `compare_stability_conditions()` - 안정/불안정 조건 비교
-
-**문서**
-- 아키텍처 철학 문서 추가 (`docs/ARCHITECTURE_PHILOSOPHY.md`)
-- 분리 실행 계획 문서 추가 (`docs/SEPARATION_ACTION_PLAN.md`)
-- README 업데이트 (원인 분석 전용 명시)
-- CHANGELOG 작성
-
-**핵심 원칙**: "진단서(원인)와 처방전(해결)은 분리되어야 함"
+**시스템**: PHAM (Proof of Authorship & Merit)  
+**목적**: 코드 기여 및 버전 추적
 
 ---
 
-### v1.0.0 (2026-02-02)
+## 📊 버전별 해시 기록
 
-**초기 릴리스**
+### v1.2.0 (2026-02-03)
 
-- 삼체 문제 경계 정합 분석 엔진 구현
-- 독립 모듈 설계 (외부 의존성 없음)
-- 원인 분석 철학 구현
-- 궤도 안정성 분석 기능
-- 라그랑주 점 경계 관찰 기능
-- 안정/불안정 조건 비교 기능
-- 해결 탐색 기능 (프로토타입, v1.1.0에서 제거됨)
+**변경 사항**:
+- L1 (Failure Atlas) 레이어 구현 완료
+- L2 (Failure Bias Converter) 레이어 구현 완료
+- 전력 효율 분석 문서 추가
+- 신경생물학적 기초 분석 추가
+- 개념 및 수식 참조 가이드 추가
+- L3 레이어 개념 설계 추가
 
-#### v1.0.0 파일 해시 (참고용)
+**해시 기록**:
+```
+[대기 중 - PHAM 블록체인 서명 필요]
+```
 
-| 파일 경로 | SHA256 해시 |
-|-----------|-------------|
-| `src/three_body_boundary_engine/__init__.py` | d7c967867ccb12268e590a5651e3be63eb0b587b8d39732a9cf375ee7647e023 |
-| `src/three_body_boundary_engine/three_body_boundary_engine.py` | a4da0a62c3941440c8da0e28ec6236f6914a7e899503a8530c5ce3ab60edf2aa |
-| `src/three_body_boundary_engine/models.py` | 1408bdb7f46c4a2daaf2c0cffa9d0e8fc04ac5252d2a8a81ba0584417e270317 |
-| `README.md` | 09e764d651f3bc8ac2a647f5a30be22944f9d441bcceb624a696b3afc1dfedd8 |
+**주요 파일**:
+- `src/three_body_boundary_engine/failure_atlas.py`
+- `src/three_body_boundary_engine/failure_bias_converter.py`
+- `docs/POWER_EFFICIENCY_ANALYSIS.md`
+- `docs/NEUROBIOLOGICAL_FOUNDATION.md`
+- `docs/CONCEPT_FORMULA_REFERENCE.md`
+
+**블록체인 서명 상태**: ⏳ 대기 중
+
+---
+
+### v1.1.0 (2026-02-02)
+
+**변경 사항**:
+- L0 (원인 분석) 레이어 완성
+- 경계 정합 분석 엔진 구현
+- 기본 문서화 완료
+
+**해시 기록**:
+```
+[대기 중 - PHAM 블록체인 서명 필요]
+```
+
+**블록체인 서명 상태**: ⏳ 대기 중
+
+---
+
+### v1.0.0 (2026-02-01)
+
+**초기 릴리즈**:
+- ThreeBodyBoundaryEngine 기본 구조
+- 경계 정합 관점 도입
+- 기본 수식 구현
+
+**해시 기록**:
+```
+[대기 중 - PHAM 블록체인 서명 필요]
+```
+
+**블록체인 서명 상태**: ⏳ 대기 중
+
+---
+
+## ⚠️ 중요 사항
+
+### 블록체인 서명 전 확인 사항
+
+1. **코드 검증**
+   - [ ] 모든 테스트 통과
+   - [ ] 린터 오류 없음
+   - [ ] 타입 체크 통과
+
+2. **문서 검증**
+   - [ ] 주석 정확성 확인
+   - [ ] 개념 명확성 확인
+   - [ ] 수식 정확성 확인
+
+3. **버전 관리**
+   - [ ] 버전 번호 일관성
+   - [ ] CHANGELOG 업데이트
+   - [ ] Git 태그 생성
+
+4. **블록체인 서명**
+   - [ ] PHAM 블록체인 해시 생성
+   - [ ] 해시 기록 업데이트
+   - [ ] 서명 완료 확인
+
+---
+
+## 📝 해시 기록 형식
+
+```markdown
+### vX.Y.Z (YYYY-MM-DD)
+
+**변경 사항**:
+- 주요 변경 사항 1
+- 주요 변경 사항 2
+
+**해시 기록**:
+```
+PHAM_HASH: [해시값]
+TX_ID: [트랜잭션 ID]
+TIMESTAMP: [타임스탬프]
+```
+
+**주요 파일**:
+- 파일 경로 1
+- 파일 경로 2
+
+**블록체인 서명 상태**: ✅ 완료 / ⏳ 대기 중
+```
+
+---
+
+## 🔄 업데이트 프로세스
+
+1. **코드 변경 및 테스트**
+2. **버전 번호 업데이트**
+3. **문서 업데이트**
+4. **이 파일에 해시 기록 추가**
+5. **PHAM 블록체인 서명**
+6. **해시 기록 완료 표시**
 
 ---
 
 **작성자**: GNJz (Qquarts)  
-**PHAM 시스템**: Proof of Authorship & Merit
-
+**최종 업데이트**: 2026-02-03  
+**상태**: 블록체인 서명 대기 중
