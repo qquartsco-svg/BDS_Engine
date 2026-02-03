@@ -38,6 +38,7 @@ from .failure_bias_converter import (
     FailureBiasConverter,
     SearchBias
 )
+from .run_result import EngineRunResult
 
 __version__ = "1.2.0"
 __all__ = [
@@ -53,6 +54,7 @@ __all__ = [
     "FailureAtlas",
     "CollapseMode",
     "FailureBiasConverter",
-    "SearchBias"
+    "SearchBias",
+    "EngineRunResult"
 ]
 

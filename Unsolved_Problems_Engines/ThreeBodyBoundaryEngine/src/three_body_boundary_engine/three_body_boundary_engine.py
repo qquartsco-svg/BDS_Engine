@@ -43,6 +43,9 @@ from .gravity_calculator import GravityCalculator
 from .boundary_convergence_adapter import BoundaryConvergenceAdapter
 from .lagrange_calculator import LagrangeCalculator
 from .point import Point
+from .failure_atlas import FailureAtlas, FailureRecord
+from .failure_bias_converter import FailureBiasConverter, SearchBias
+from .run_result import EngineRunResult
 
 
 class ThreeBodyBoundaryEngine:
@@ -135,6 +138,68 @@ class ThreeBodyBoundaryEngine:
             boundary_points=result.boundary_points,
             stability_score=stability_score,
             convergence_rate=result.convergence_rate
+        )
+
+    def run(
+        self,
+        system: ThreeBodySystem,
+        x_range: Optional[tuple] = None,
+        y_range: Optional[tuple] = None,
+        *,
+        failure_threshold: float = 0.1,
+        enable_l1: bool = True,
+        enable_l2: bool = True,
+        failure_atlas: Optional[FailureAtlas] = None,
+        bias_converter: Optional[FailureBiasConverter] = None
+    ) -> EngineRunResult:
+        """통합 실행 (L0 → L1 → L2)
+
+        외부 사용자는 이 메서드 하나로 L0/L1/L2를 통합 실행할 수 있다.
+        내부 구현은 레이어 파일을 분리 유지한다.
+
+        Args:
+            system: 삼체 시스템
+            x_range: x 범위 (min, max). None이면 자동 계산.
+            y_range: y 범위 (min, max). None이면 자동 계산.
+            failure_threshold: 실패 판정 임계값 (StabilityAnalysis.is_stable의 threshold)
+            enable_l1: L1(FailureAtlas) 기록 수행 여부
+            enable_l2: L2(SearchBias) 생성 수행 여부
+            failure_atlas: 기존 FailureAtlas (누적 목적). None이면 필요 시 새로 생성.
+            bias_converter: 기존 FailureBiasConverter. None이면 기본값으로 생성.
+
+        Returns:
+            EngineRunResult: analysis(L0), failure_atlas(L1), search_bias(L2), last_failure_record
+        """
+        analysis = self.analyze_orbit_stability(system=system, x_range=x_range, y_range=y_range)
+
+        atlas: Optional[FailureAtlas] = failure_atlas
+        last_record: Optional[FailureRecord] = None
+
+        # L1: 실패 기록 (누적)
+        if enable_l1:
+            atlas = atlas or FailureAtlas()
+            last_record = atlas.record_failure(
+                analysis=analysis,
+                system=system,
+                threshold=failure_threshold
+            )
+
+        # L2: 편향 생성
+        bias: Optional[SearchBias] = None
+        if enable_l2:
+            # enable_l2인데 atlas가 없으면, 입력으로 atlas를 주거나 L1을 켜야 한다.
+            if atlas is None:
+                raise ValueError("enable_l2=True requires a FailureAtlas. Provide failure_atlas or set enable_l1=True.")
+
+            converter = bias_converter or FailureBiasConverter()
+            bias = converter.convert_failure_to_bias(failure_atlas=atlas)
+
+        return EngineRunResult(
+            system=system,
+            analysis=analysis,
+            failure_atlas=atlas,
+            search_bias=bias,
+            last_failure_record=last_record
         )
     
     def observe_boundary_formation(

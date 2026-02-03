@@ -174,6 +174,60 @@ for i, result in enumerate(results):
 
 ---
 
+#### `run()`
+
+통합 실행 (L0 → L1 → L2)
+
+외부 사용자는 `run()` 하나로 L0/L1/L2를 일관된 형태로 실행할 수 있습니다.  
+내부 구현은 레이어 파일을 분리 유지합니다.
+
+```python
+run(
+    system: ThreeBodySystem,
+    x_range: Optional[tuple] = None,
+    y_range: Optional[tuple] = None,
+    *,
+    failure_threshold: float = 0.1,
+    enable_l1: bool = True,
+    enable_l2: bool = True,
+    failure_atlas: Optional[FailureAtlas] = None,
+    bias_converter: Optional[FailureBiasConverter] = None
+) -> EngineRunResult
+```
+
+**매개변수**:
+- `system` (ThreeBodySystem): 분석할 삼체 시스템
+- `x_range` / `y_range` (Optional[tuple]): 분석 영역 범위. None이면 자동 계산.
+- `failure_threshold` (float): 실패 판정 임계값 (L1 기록에 사용)
+- `enable_l1` (bool): L1 기록 수행 여부
+- `enable_l2` (bool): L2 편향 생성 수행 여부
+- `failure_atlas` (Optional[FailureAtlas]): 기존 실패 지도(누적 목적). None이면 필요 시 새로 생성.
+- `bias_converter` (Optional[FailureBiasConverter]): 기존 변환기. None이면 기본값 사용.
+
+**반환값**: `EngineRunResult`
+- `analysis`: L0 출력
+- `failure_atlas`: L1 누적 결과 (enable_l1 또는 입력 제공 시)
+- `search_bias`: L2 출력 (enable_l2 시)
+- `last_failure_record`: 이번 실행에서 추가로 기록된 실패(실패가 아니면 None)
+
+**예제**:
+```python
+from three_body_boundary_engine import (
+    ThreeBodyBoundaryEngine, ThreeBodySystem, Body, Point
+)
+
+engine = ThreeBodyBoundaryEngine()
+system = ThreeBodySystem(
+    body1=Body(position=Point(0.0, 0.0), mass=1.0),
+    body2=Body(position=Point(1.0, 0.0), mass=1.0),
+    body3=Body(position=Point(0.5, 0.866), mass=1.0)
+)
+
+result = engine.run(system, enable_l1=True, enable_l2=True)
+print(result.analysis.stability_score)
+print(result.search_bias.total_risk_score)
+```
+
 ## L1: 실패 추적 레이어
 
 ### `FailureAtlas`

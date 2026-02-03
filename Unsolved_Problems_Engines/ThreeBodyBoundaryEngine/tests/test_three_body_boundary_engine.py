@@ -64,6 +64,55 @@ class TestThreeBodyBoundaryEngine(unittest.TestCase):
         
         # 불일치는 0 이상
         assert analysis.mismatch >= 0.0
+
+    def test_engine_run_result_structure(self):
+        """통합 실행(run) 결과 구조 테스트 (L0/L1/L2)"""
+        config = ThreeBodyConfig()
+        engine = ThreeBodyBoundaryEngine(config)
+
+        system = ThreeBodySystem(
+            body1=Body(position=Point(0.0, 0.0), mass=1.0),
+            body2=Body(position=Point(1.0, 0.0), mass=1.0),
+            body3=Body(position=Point(0.5, 0.866), mass=1.0)
+        )
+
+        result = engine.run(system, enable_l1=True, enable_l2=True)
+
+        # L0
+        assert result.analysis is not None
+        assert hasattr(result.analysis, "mismatch")
+
+        # L1
+        assert result.failure_atlas is not None
+        assert hasattr(result.failure_atlas, "failure_records")
+
+        # L2
+        assert result.search_bias is not None
+        assert hasattr(result.search_bias, "risk_map")
+
+    def test_engine_run_switches(self):
+        """통합 실행(run) 스위치 동작 테스트"""
+        config = ThreeBodyConfig()
+        engine = ThreeBodyBoundaryEngine(config)
+
+        system = ThreeBodySystem(
+            body1=Body(position=Point(0.0, 0.0), mass=1.0),
+            body2=Body(position=Point(1.0, 0.0), mass=1.0),
+            body3=Body(position=Point(0.5, 0.866), mass=1.0)
+        )
+
+        # L1/L2 모두 끔: L0만 존재
+        result_l0_only = engine.run(system, enable_l1=False, enable_l2=False)
+        assert result_l0_only.analysis is not None
+        assert result_l0_only.failure_atlas is None
+        assert result_l0_only.search_bias is None
+
+        # L2만 켬 + atlas 미제공: 오류가 명시적으로 발생해야 함
+        try:
+            engine.run(system, enable_l1=False, enable_l2=True)
+            assert False, "enable_l2=True인데 FailureAtlas가 없으면 ValueError가 발생해야 합니다"
+        except ValueError:
+            pass
     
     def test_lagrange_points_observation(self):
         """라그랑주 점 경계 관찰 테스트"""

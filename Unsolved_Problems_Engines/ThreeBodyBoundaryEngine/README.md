@@ -104,13 +104,33 @@ system = ThreeBodySystem(
     body3=Body(position=Point(0.5, 0.866), mass=1.0)
 )
 
-# 궤도 안정성 분석
-analysis = engine.analyze_orbit_stability(system)
+# 통합 실행 (L0 → L1 → L2)
+result = engine.run(system, enable_l1=True, enable_l2=True)
 
-# 결과 확인
-print(f"안정 여부: {analysis.is_stable()}")
-print(f"안정성 점수: {analysis.stability_score:.3f}")
-print(f"불일치(Δ): {analysis.mismatch:.6f}")
+# L0 출력
+print(f"안정 여부: {result.analysis.is_stable()}")
+print(f"안정성 점수: {result.analysis.stability_score:.3f}")
+print(f"불일치(Δ): {result.analysis.mismatch:.6f}")
+
+# L1 누적 (실패 기록이 없을 수도 있음)
+print(f"누적 실패 개수: {result.failure_atlas.total_failures}")
+
+# L2 출력 (위험 지형)
+print(f"총 위험도: {result.search_bias.total_risk_score:.3f}")
+```
+
+### 레이어 스위치 예시
+
+```python
+# L0만 실행
+result_l0 = engine.run(system, enable_l1=False, enable_l2=False)
+
+# L1까지 실행 (실패 기록만 축적)
+result_l1 = engine.run(system, enable_l1=True, enable_l2=False)
+
+# L2만 실행하고 싶다면(이미 축적된 atlas가 있어야 함)
+atlas = result_l1.failure_atlas
+result_l2 = engine.run(system, enable_l1=False, enable_l2=True, failure_atlas=atlas)
 ```
 
 ---
