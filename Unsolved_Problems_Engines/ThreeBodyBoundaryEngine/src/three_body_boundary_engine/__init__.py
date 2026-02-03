@@ -29,6 +29,15 @@ from .models import (
     LagrangeAnalysis
 )
 from .point import Point
+from .failure_atlas import (
+    FailureRecord,
+    FailureAtlas,
+    CollapseMode
+)
+from .failure_bias_converter import (
+    FailureBiasConverter,
+    SearchBias
+)
 
 __version__ = "1.1.0"
 __all__ = [
@@ -39,6 +48,11 @@ __all__ = [
     "ThreeBodySystem",
     "StabilityAnalysis",
     "BoundaryDynamics",
-    "LagrangeAnalysis"
+    "LagrangeAnalysis",
+    "FailureRecord",
+    "FailureAtlas",
+    "CollapseMode",
+    "FailureBiasConverter",
+    "SearchBias"
 ]
 
