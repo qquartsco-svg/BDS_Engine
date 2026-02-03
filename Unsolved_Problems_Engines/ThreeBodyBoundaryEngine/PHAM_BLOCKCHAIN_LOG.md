@@ -31,31 +31,48 @@
 - 표준 결과 모델 `EngineRunResult` 추가
 - README / API_REFERENCE 예제 동기화
 - 테스트 보강 (총 23개 통과)
+- **UP-1 Scope Frozen**: README에 범위 고정 명시
 
 **Git 정보**:
 ```
-COMMIT_HASH: 764fc1b57eadb3ef04d936ec6ab5b0f1fb7f06b9
+COMMIT_HASH: eeeb48c95fd77169693a5deddaf0bc61f40e8307
 BRANCH: main
-TAG: [대기 - 태그 생성 필요]
+TAG: up-1.2.0 (v1.2.0 기준 봉인 태그)
 ```
 
 **해시 기록**:
 ```
-PROJECT_HASH: [대기 - 프로젝트 전체 해시 생성 필요]
-GIT_COMMIT_HASH: 764fc1b57eadb3ef04d936ec6ab5b0f1fb7f06b9
-PHAM_HASH: [대기 - PHAM 블록체인 서명 필요]
-TX_ID: [대기]
-TIMESTAMP: [대기]
+PROJECT_HASH: ba001f60f21b4335cd341dd060af52005ac6ddc2a75e6afc154c5b6a8e8e0f64
+GIT_COMMIT_HASH: eeeb48c95fd77169693a5deddaf0bc61f40e8307
+PHAM_HASH: 3dcd005a427aeb275a3a21b5abce7825131584683162cd3d82f7765b902c709d
+TX_ID: 3DCD005A427AEB27
+TIMESTAMP: 2026-02-03T07:44:56.134575+00:00
+```
+
+**PHAM 블록체인 서명**:
+```
+서명 요청일: 2026-02-03
+서명 상태: ✅ 서명 완료
+
+PHAM_HASH: 3dcd005a427aeb275a3a21b5abce7825131584683162cd3d82f7765b902c709d
+TX_ID: 3DCD005A427AEB27
+TIMESTAMP: 2026-02-03T07:44:56.134575+00:00
+
+생성 정보:
+- 프로젝트 해시 기반 PHAM 해시 생성
+- 프로젝트 정보 + 타임스탬프 기반 서명
+- SHA256 해시 알고리즘 사용
+- scope_status: frozen (UP-1 범위 고정)
 ```
 
 **검증 상태**:
 - [x] 모든 테스트 통과 (23개)
 - [x] 문서(README/API_REFERENCE) 동기화
-- [ ] 프로젝트 해시 생성
-- [ ] PHAM 블록체인 서명
-- [ ] 태그 생성
+- [x] 프로젝트 해시 생성 완료
+- [x] PHAM 블록체인 서명 완료
+- [x] 태그 생성 완료 (up-1.2.0)
 
-**블록체인 서명 상태**: ⏳ 대기 중
+**블록체인 서명 상태**: ✅ 서명 완료
 
 ### v1.2.0 (2026-02-03)
 

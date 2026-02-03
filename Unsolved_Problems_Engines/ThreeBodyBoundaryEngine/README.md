@@ -8,6 +8,10 @@
 
 **ThreeBodyBoundaryEngine**은 삼체 문제를 경계 정합 관점에서 **원인 분석**하는 독립 엔진 모듈입니다.
 
+> **🔒 UP-1 Scope Frozen**: UP-1 (ThreeBodyBoundaryEngine)의 범위는 고정되었습니다.  
+> L0/L1/L2 레이어가 완성되었으며, 추가 기능(L3 탐색, 범용화)은 별도 엔진으로 구현됩니다.  
+> **UP-1 scope is frozen. Further capabilities are implemented in separate engines.**
+
 > **⚠️ 실험적 소프트웨어**: 이 소프트웨어는 아직 물리적 테스트를 거치지 않은 실험적 단계입니다.  
 > 자세한 내용: [실험적 상태 명시](./EXPERIMENTAL_STATUS.md)
 
