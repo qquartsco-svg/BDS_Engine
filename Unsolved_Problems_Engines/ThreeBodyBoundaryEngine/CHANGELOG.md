@@ -50,6 +50,23 @@
 
 ---
 
+## [1.2.1] - 2026-02-03
+
+### 추가됨 (Added)
+- **통합 API(Facade Pattern)**: `ThreeBodyBoundaryEngine.run()` 추가
+  - L0 → L1 → L2 파이프라인을 단일 진입점으로 실행
+  - `enable_l1`, `enable_l2` 스위치로 레이어 on/off 지원
+  - L2 활성화 시 FailureAtlas 미존재 상황은 `ValueError`로 명시적 차단
+- **표준 결과 모델**: `EngineRunResult`
+  - `analysis(L0)`, `failure_atlas(L1)`, `search_bias(L2)`, `last_failure_record` 고정 구조 제공
+
+### 변경됨 (Changed)
+- README / API_REFERENCE의 퀵스타트 예제를 `run()` 기반으로 동기화
+
+### 테스트 (Tests)
+- `run()` 경로 및 스위치 조합 테스트 추가
+- 전체 테스트 23개 통과
+
 ## [1.1.0] - 2026-02-02
 
 ### 추가됨 (Added)

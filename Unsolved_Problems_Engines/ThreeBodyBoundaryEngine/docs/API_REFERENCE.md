@@ -1,7 +1,7 @@
 # API Reference - ThreeBodyBoundaryEngine
 
 **엔진 번호**: UP-1  
-**버전**: 1.2.0  
+**버전**: 1.2.1  
 **최종 업데이트**: 2026-02-03
 
 ---

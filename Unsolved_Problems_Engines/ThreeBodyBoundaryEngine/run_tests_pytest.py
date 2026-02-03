@@ -34,7 +34,7 @@ def run_pytest_tests():
     """pytest를 사용하여 모든 테스트 실행"""
     print_header("ThreeBodyBoundaryEngine 통합 테스트 (pytest)")
     print(f"실행 시간: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"버전: 1.2.0")
+    print(f"버전: 1.2.1")
     
     project_root = Path(__file__).parent
     tests_dir = project_root / "tests"

@@ -2,7 +2,7 @@
 ThreeBodyBoundaryEngine - Setup Script
 
 Author: GNJz (Qquarts)
-Version: 1.2.0
+Version: 1.2.1
 """
 
 from setuptools import setup, find_packages
@@ -16,7 +16,7 @@ def get_version():
         for line in f:
             if line.startswith("__version__"):
                 return line.split("=")[1].strip().strip('"').strip("'")
-    return "1.2.0"  # fallback
+    return "1.2.1"  # fallback
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()

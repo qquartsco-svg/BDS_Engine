@@ -24,6 +24,39 @@
 
 ## 📊 버전별 해시 기록
 
+### v1.2.1 (2026-02-03)
+
+**변경 사항**:
+- 통합 API(Facade Pattern): `ThreeBodyBoundaryEngine.run()` 추가
+- 표준 결과 모델 `EngineRunResult` 추가
+- README / API_REFERENCE 예제 동기화
+- 테스트 보강 (총 23개 통과)
+
+**Git 정보**:
+```
+COMMIT_HASH: 764fc1b57eadb3ef04d936ec6ab5b0f1fb7f06b9
+BRANCH: main
+TAG: [대기 - 태그 생성 필요]
+```
+
+**해시 기록**:
+```
+PROJECT_HASH: [대기 - 프로젝트 전체 해시 생성 필요]
+GIT_COMMIT_HASH: 764fc1b57eadb3ef04d936ec6ab5b0f1fb7f06b9
+PHAM_HASH: [대기 - PHAM 블록체인 서명 필요]
+TX_ID: [대기]
+TIMESTAMP: [대기]
+```
+
+**검증 상태**:
+- [x] 모든 테스트 통과 (23개)
+- [x] 문서(README/API_REFERENCE) 동기화
+- [ ] 프로젝트 해시 생성
+- [ ] PHAM 블록체인 서명
+- [ ] 태그 생성
+
+**블록체인 서명 상태**: ⏳ 대기 중
+
 ### v1.2.0 (2026-02-03)
 
 **변경 사항**:
